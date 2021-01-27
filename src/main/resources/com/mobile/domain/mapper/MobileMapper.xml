@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mobile.domain.mapper.MobileMapper">
+    <resultMap id="BaseResultMap" type="com.mobile.domain.po.Mobile">
+        <id column="id" jdbcType="VARCHAR" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="emulator" jdbcType="TINYINT" property="emulator" />
+        <result column="agent_ip" jdbcType="VARCHAR" property="agentIp" />
+        <result column="agent_port" jdbcType="INTEGER" property="agentPort" />
+        <result column="system_version" jdbcType="VARCHAR" property="systemVersion" />
+        <result column="cpu_info" jdbcType="VARCHAR" property="cpuInfo" />
+        <result column="mem_size" jdbcType="VARCHAR" property="memSize" />
+        <result column="screen_width" jdbcType="INTEGER" property="screenWidth" />
+        <result column="screen_height" jdbcType="INTEGER" property="screenHeight" />
+        <result column="img_path" jdbcType="VARCHAR" property="imgPath" />
+        <result column="platform" jdbcType="TINYINT" property="platform" />
+        <result column="status" jdbcType="TINYINT" property="status" />
+        <result column="last_online_time" jdbcType="TIMESTAMP" property="lastOnlineTime" />
+        <result column="username" jdbcType="VARCHAR" property="username" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    id, name, emulator, agent_ip, agent_port, system_version, cpu_info, mem_size, screen_width,
+    screen_height, img_path, platform, status, last_online_time, username, create_time
+  </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from mobile
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+</mapper>
